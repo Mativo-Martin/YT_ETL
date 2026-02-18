@@ -49,9 +49,7 @@ x-airflow-common:
   # Use custom image that builds on top of default airflow image (currently; Default: apache/airflow:2.9.2)
   # Image stored on Dockerhub
   image: ${DOCKERHUB_NAMESPACE}/${DOCKERHUB_REPOSITORY}:latest
-  # Use the .env file to read the connection params and variables - SWITCH THIS OFF WHEN USING GITHUB ACTIONS
-  # env_file:
-  #   - .env
+  
   environment:
     &airflow-common-env
     # Set executor to CeleryExecutor 
@@ -151,7 +149,7 @@ services:
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
-      timeout: 30s
+      timeout: 40s
       retries: 50
       start_period: 30s
     restart: always
