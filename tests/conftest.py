@@ -23,6 +23,7 @@ def mock_postgres_conn_vars():
         port=1234,
         schema="mock_db"
     )
+    
     conn_uri  = conn.get_uri()
 
     with mock.patch.dict("os.environ",AIRFLOW_CONN_POSTGRES_DB_YT_ELT=conn_uri):
